@@ -1,0 +1,60 @@
+@import 'w3-css/w3.css';
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    padding: 0px;
+}
+
+.banner {
+    height: 200px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    background-color:lightblue;
+}
+
+.w3-bar {
+    background-color: dodgerblue;
+    color:white;
+}
+
+.w3-bar-item {
+    text-decoration: none;
+}
+
+.w3-bar-item:hover {
+    background-color: navy;
+}
+
+.nav-active {
+    background-color: blue;
+}
+
+.content {
+    display: table;
+    width: auto;
+    margin-top: 10px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: lightgray 5px 5px;
+}
+
+.app-primary {
+    background-color: lightblue;
+}
+
+.accordion {
+    margin: 5px 5px;
+}
+
+.accordion summary {
+    background-color: rgb(218, 240, 248);
+    padding: 10px;
+}

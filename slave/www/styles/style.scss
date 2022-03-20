@@ -1,0 +1,15 @@
+@import 'www-util/styles/style.scss';
+
+hr {
+    border-color: lightgray;
+}
+
+table {
+    table-layout: fixed;
+}
+
+th,
+td {
+    overflow: auto;
+    vertical-align: middle !important;
+}
