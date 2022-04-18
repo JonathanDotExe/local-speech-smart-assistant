@@ -1,4 +1,4 @@
-from random import random
+import random
 from master.plugin import *
 from master.command import *
 import socket
