@@ -34,11 +34,12 @@ def parse_params(inp: str, template: str):
 
 class CommandArguments:
 
-    def __init__(self, texts: [str], language: [str], executor: int, assistant):
+    def __init__(self, texts: [str], language: [str], executor: int, assistant, selected_text: str):
         self.texts = texts
         self.language = language
         self.executor = executor
         self.assistant = assistant
+        self.selected_text = selected_text
 
 class Statement:
 
@@ -65,10 +66,12 @@ class Statement:
                     parsed = parse_params(inp, grammar)
                     if parsed:
                         values.update(parsed)
+                        args.selected_text = inp
                         return self.callback(values, args)
                 else:
                     values = parse_params(inp, grammar)
                     if values:
+                        args.selected_text = inp
                         return self.callback(values, args)
         return None
 

@@ -23,5 +23,6 @@ class Command:
             for alias in self.aliases[args.language]:
                 values = parse_params(inp, alias)
                 if values != None:
+                    args.selected_text = inp
                     return self.execute(values, args)
         return None

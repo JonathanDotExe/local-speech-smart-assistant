@@ -68,6 +68,7 @@ class CalculatorCommand(Command):
                 "rechne {number1} minus {number2}",
                 "rechne {number1} mal {number2}",
                 "rechne {number1} dividiert durch {number2}",
+                "rechne {number1} durch {number2}",
             ],
         }
         self.texts = {
@@ -86,17 +87,23 @@ class CalculatorCommand(Command):
         number1 = 0
         try:
             number1 = int(NUMBER_TEXTS[args.language][params["number1"]])
-            print(number1)
         except:
             return Statement(self.get_text("NOT_A_NUMBER", args.language, { "number": params["number1"]}), finished=True)
         number2 = 0
         try:
             number2 = int(NUMBER_TEXTS[args.language][params["number2"]])
-            print(number2)
         except:
             return Statement(self.get_text("NOT_A_NUMBER", args.language, { "number": params["number2"]}), finished=True)
         #Calculate
-        result = number1 + number2
+        result = 0
+        if "plus" in args.selected_text:
+            result = number1 + number2
+        elif "minus" in args.selected_text:
+            result = number1 - number2
+        elif "times" in args.selected_text or "mal" in args.selected_text:
+            result = number1 * number2
+        elif "divided by" in args.selected_text or "durch" in args.selected_text:
+            result = number1 / number2
         return Statement(self.get_text("RESULT", args.language, { "result": result}), finished=True)
 
 

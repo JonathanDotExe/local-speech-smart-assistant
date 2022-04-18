@@ -190,7 +190,7 @@ class AssistantServer:
             except KeyError:
                 return 'Invalid JSON'
 
-            args = CommandArguments(commands, language, session["client_id"], None)
+            args = CommandArguments(commands, language, session["client_id"], None, "")
             ret = self.assistant.on_command(args)
 
             if ret:
@@ -210,7 +210,7 @@ class AssistantServer:
             except KeyError:
                 return 'Invalid JSON'
             
-            args = CommandArguments(answers, language, session['client_id'], None)
+            args = CommandArguments(answers, language, session['client_id'], None, "")
             ret = self.assistant.on_answer(id, args)
 
             if ret:
