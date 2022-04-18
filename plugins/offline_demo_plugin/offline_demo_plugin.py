@@ -1,6 +1,7 @@
 import random
 from master.plugin import *
 from master.command import *
+from master.number_parser import *
 import socket
 
 class MarryMeCommand(Command):
@@ -47,6 +48,58 @@ class MarryMeCommand(Command):
     def execute(self, params: dict, args: CommandArguments) -> Statement:
         return Statement(self.get_text(random.choice(['ANSWER1', 'ANSWER2', 'ANSWER3', 'ANSWER4', 'ANSWER5']), args.language, params), finished=True)
 
+
+class CalculatorCommand(Command):
+
+    def __init__(self, plugin):
+        super().__init__()
+        self.plugin = plugin
+        self.name = "Calculator Command"
+        self.description = "Calculates simple calculations for you (only supports 0 - 10)"
+        self.aliases = {
+            'en': [
+                "calculate {number1} plus {number2}",
+                "calculate {number1} minus {number2}",
+                "calculate {number1} times {number2}",
+                "calculate {number1} divided by {number2}",
+            ],
+            'de': [
+                "rechne {number1} plus {number2}",
+                "rechne {number1} minus {number2}",
+                "rechne {number1} mal {number2}",
+                "rechne {number1} dividiert durch {number2}",
+            ],
+        }
+        self.texts = {
+            'en': {
+                "RESULT": "The result is {result}!",
+                "NOT_A_NUMBER": "I'm sorry, {number} is not a number!"
+            },
+            'de': {
+                "RESULT": "Das Ergebnis ist {result}!",
+                "NOT_A_NUMBER": "Tut mir leid, {number} ist keine Zahl!"
+            },
+        }
+    
+    def execute(self, params: dict, args: CommandArguments) -> Statement:
+        #Parse numbers
+        number1 = 0
+        try:
+            number1 = int(NUMBER_TEXTS[args.language][params["number1"]])
+            print(number1)
+        except:
+            return Statement(self.get_text("NOT_A_NUMBER", args.language, { "number": params["number1"]}), finished=True)
+        number2 = 0
+        try:
+            number2 = int(NUMBER_TEXTS[args.language][params["number2"]])
+            print(number2)
+        except:
+            return Statement(self.get_text("NOT_A_NUMBER", args.language, { "number": params["number2"]}), finished=True)
+        #Calculate
+        result = number1 + number2
+        return Statement(self.get_text("RESULT", args.language, { "result": result}), finished=True)
+
+
 class OfflineDemoPlugin(Plugin):
 
     def __init__(self):
@@ -59,4 +112,5 @@ class OfflineDemoPlugin(Plugin):
         }
         self.commands = [
             MarryMeCommand(self),
+            CalculatorCommand(self),
         ]
