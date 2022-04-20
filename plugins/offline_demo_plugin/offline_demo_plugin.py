@@ -34,14 +34,14 @@ class MarryMeCommand(Command):
                 "ANSWER2": "Sorry I'm already taken.",
                 "ANSWER3": "I'm afraid I can't fall in love with you on command!",
                 "ANSWER4": "Maybe if you ask more kindly.",
-                "ANSWER5": "Do you really want that?"
+                "ANSWER5": "Do you really want that? I don't think so!"
             },
             'de': {
                 "ANSWER1": "Ich glaube nicht, dass eine Beziehung zwischen Mensch und Maschine funktionieren würde!",
                 "ANSWER2": "Tut mir leid, ich bin bereits vergeben.",
                 "ANSWER3": "Ich kann mich leider nicht auf Befehl in dich verlieben.",
                 "ANSWER4": "Vielleicht wenn du noch lieber fragst.",
-                "ANSWER5": "Willst du das wirklich?"
+                "ANSWER5": "Willst du das wirklich? Ich glaube nicht!"
             },
         }
     
@@ -62,6 +62,10 @@ class CalculatorCommand(Command):
                 "calculate {number1} minus {number2}",
                 "calculate {number1} times {number2}",
                 "calculate {number1} divided by {number2}",
+                "what is {number1} plus {number2}",
+                "what is {number1} minus {number2}",
+                "what is {number1} times {number2}",
+                "what is {number1} divided by {number2}",
             ],
             'de': [
                 "rechne {number1} plus {number2}",
@@ -69,6 +73,11 @@ class CalculatorCommand(Command):
                 "rechne {number1} mal {number2}",
                 "rechne {number1} dividiert durch {number2}",
                 "rechne {number1} durch {number2}",
+                "was ist {number1} plus {number2}",
+                "was ist {number1} minus {number2}",
+                "was ist {number1} mal {number2}",
+                "was ist {number1} dividiert durch {number2}",
+                "was ist {number1} durch {number2}",
             ],
         }
         self.texts = {
