@@ -2,6 +2,7 @@ git pull
 
 source venv/bin/activate
 pip install --upgrade -r requirements_rockpi.txt
+pip install --upgrade git+https://github.com/Cupcakus/pafy
 
 cd master
 ./install_plugins.sh

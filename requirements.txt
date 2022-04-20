@@ -15,7 +15,6 @@ rsa==4.7.2
 youtube-search-python==1.4.7
 python-vlc==3.0.12118
 beautifulsoup4==4.9.3
-git+https://github.com/Cupcakus/pafy
 pixel-ring==0.1.0
 pyalsaaudio==0.9.0
 youtube_dl==2021.6.6
